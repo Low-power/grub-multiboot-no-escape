@@ -1,5 +1,5 @@
 ## Introduction
-GRUB2 cannot be used to boot early Solaris release (before 11.2) from ZFS root, due to the kernel cannot parse the command line that the GRUB passed in. In order booting up a Solaris OS from ZFS, the boot-loader need to pass some parameters to tell the kernel where to find zpool, and which one is root file system in the zpool, as following syntax:
+GRUB2 cannot be used to boot early Solaris release (before 11.2) from a ZFS root, due to the kernel cannot parse the command line that the GRUB passed in. In order booting up a Solaris OS from ZFS, the boot-loader need to pass some parameters to tell the kernel where to find zpool, and which one is root file system in the zpool, as following syntax:
 ```
 -B zfs-bootfs=<pool-name>/<fs-num>,bootpath="<device-physical-path>",diskdevid="<device-logic-path>"
 ```
@@ -7,7 +7,7 @@ for example:
 ```
 -B zfs-bootfs=zr/96,bootpath="/pci@0,0/pci103c,30be@1f,2/disk@0,0:s",diskdevid="id1,sd@SATA_____Hitachi_HTS54321091222FBH206VCHTSM0C/s"
 ```
-Note the double quotes in the command line, this is necessary to specify a value that contains commas so the kernel dosen't think such a comma indicates next parameter. The problem in GRUB2 is, the quotes are escaped, the above command that passed the kernel will become:
+Note the double quotes in the command line, this is necessary to specify a value that contains commas so the kernel dosen't think such a comma indicates next parameter. The problem in GRUB2 is, the quotes are escaped by default multiboot module, the above command that passed the kernel will become:
 ```
 -B zfs-bootfs=zr/96,bootpath=\"/pci@0,0/pci103c,30be@1f,2/disk@0,0:s\",diskdevid=\"id1,sd@SATA_____Hitachi_HTS54321091222FBH206VCHTSM0C/s\"
 ```
