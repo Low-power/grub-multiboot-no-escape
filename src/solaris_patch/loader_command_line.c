@@ -1,4 +1,4 @@
-/* hello.c - test module for dynamic loading */
+/* Precess command line for kernel */
 /*
  *  GRUB  --  GRand Unified Bootloader
  *  Copyright (C) 2003,2007  Free Software Foundation, Inc.
@@ -50,9 +50,8 @@ int grub_create_loader_cmdline (int argc, char *argv[], char *buf,
   unsigned int arg_size;
   char *c;
 
-	grub_printf("function: grub_create_loader_cmdline(%d, %p, %p, %u)\n",
-		argc, argv, buf, (unsigned int)size);
-	//grub_millisleep(2000);
+	//grub_printf("function: grub_create_loader_cmdline(%d, %p, %p, %u)\n",
+	//	argc, argv, buf, (unsigned int)size);
 
   for (i = 0; i < argc; i++)
     {
