@@ -21,3 +21,9 @@ To build this module, configure and build a GRUB from source at first (Tested on
 
 ## Usage
 Just issue a `insmod multiboot_no_escape` in GRUB commands before using `multiboot` command to load a Solaris kernel; put this line in your `grub.cfg`. See also the `example-grub.cfg` in this repository.
+
+## Warranty
+There's absolutely **NO WARRANTY**. Use the program at your own risk.
+
+## License
+Since the code is copied from GRUB2, the original license (GPL-3+) terms applies.

@@ -1,8 +1,7 @@
 /* Precess command line for kernel */
 /*
  *  GRUB  --  GRand Unified Bootloader
- *  Copyright (C) 2003,2007  Free Software Foundation, Inc.
- *  Copyright (C) 2003  NIIBE Yutaka <gniibe@m17n.org>
+ *  Copyright (C) 2010  Free Software Foundation, Inc.
  *
  *  GRUB is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
