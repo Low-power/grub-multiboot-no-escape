@@ -17,10 +17,10 @@ This program is actully a small patch to the GRUB mutilboot module, that will no
 Starting with Solaris 11.2, the kernel recognizes escaped double quotes, thus be able to boot from GRUB2, without need this program.
 
 ## Build and Installation
-To build this module, configure and build a GRUB from source at first (Tested on GRUB 2.02 source code), copy files **inside** the `src/` directory into the `grub-core/` directory of the GRUB source tree, **enter that directory**, then run the build-multiboot_no_escape.sh script. A module named multiboot_no_escape.mod will appear if build successful; copy the file multiboot_no_escape.mod to your GRUB installation directory, typically /boot/grub/i386-pc if you are using legacy PC BIOS to boot up GRUB.
+To build this module, configure and build a GRUB from source at first (Tested on GRUB 2.02 source code), copy files **inside** the `src/` directory into the `grub-core/` directory of the GRUB source tree, **enter that directory**, then run the build-multiboot_no_escape.sh script. A module named multiboot_no_escape.mod will appear if build successful; copy the file multiboot_no_escape.mod to your GRUB installation directory, typically `/boot/grub/i386-pc` if you are using legacy PC BIOS to boot up GRUB.
 
 ## Usage
-Just issue a `insmod multiboot_no_escape` in GRUB commands before using `multiboot` command to load a Solaris kernel; put this line in your `grub.cfg`. See also the `example-grub.cfg` in this repository.
+Just issue a `insmod multiboot_no_escape` in GRUB commands before using any `multiboot` and `module` commands, then prepare ZFS bootfs parameters, load Solaris kernel and boot archive as normal. See also the `example-grub.cfg` in this repository.
 
 ## Warranty
 There's absolutely **NO WARRANTY**. Use the program at your own risk.
