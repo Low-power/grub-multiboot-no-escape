@@ -1,5 +1,5 @@
 ## Introduction
-GRUB2 cannot be used to boot early Solaris release (before 11.2) from a ZFS root, due to the kernel cannot parse the command line that the GRUB passed in. In order booting up a Solaris OS from ZFS, the boot-loader need to pass some parameters to tell the kernel where to find zpool, and which one is root file system in the zpool, as following syntax:
+Unmodified versions of GRUB2 cannot be used to boot Solaris OS from a ZFS root, due to the kernel cannot parse the command line that the GRUB passed in. In order booting up a Solaris OS from ZFS, the boot-loader need to pass some parameters to tell the kernel where to find zpool, and which one is root file system in the zpool, as following syntax:
 ```
 -B zfs-bootfs=<pool-name>/<fs-num>,bootpath="<device-physical-path>",diskdevid="<device-logic-path>"
 ```
@@ -14,7 +14,7 @@ Note the double quotes in the command line, this is necessary to specify a value
 So the kernel being messed up, complains about unrecognized parameters and then panics due to failed to find a root file system.
 This program is actully a small patch to the GRUB mutilboot module, that will not escape the command line; in fact it will not modify the command line in any way.
 
-Starting with Solaris 11.2, the kernel recognizes escaped double quotes, thus be able to boot from GRUB2, without need this program.
+Starting with Solaris 11.1 release, the default boot-loader for x86 has switched to GRUB2, the modifications to that GRUB2 includes the same hack; so an alternate solution is using a version of GRUB2 that comes with Solaris 11.1 or later.
 
 ## Build and Installation
 To build this module, configure and build a GRUB from source at first (Tested on GRUB 2.02 source code), copy files **inside** the `src/` directory into the `grub-core/` directory of the GRUB source tree, **enter that directory**, then run the build-multiboot_no_escape.sh script. A module named multiboot_no_escape.mod will appear if build successful; copy the file multiboot_no_escape.mod to your GRUB installation directory, typically `/boot/grub/i386-pc` if you are using legacy PC BIOS to boot up GRUB.
